@@ -1,0 +1,22 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Git Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Java SDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      - name: Unit Test
+        run: mvn test
+
