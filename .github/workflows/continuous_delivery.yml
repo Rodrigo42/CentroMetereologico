@@ -5,7 +5,7 @@ on:
     branches: "main"
 
 env:
-  IMAGE_NAME: rodrigo42/cmc:v2
+  IMAGE_NAME: rodrigo42/cmc
   AZURE_WEBAPP_NAME: fiap-cmc-api-dev
 
 jobs:
