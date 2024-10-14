@@ -29,7 +29,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/chuva/listar", "/api/seca/listar", "/api/terremoto/listar", "/api/qldar/listar","/api/qldagua/listar").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.GET, "/api/chuva/listar", "/api/seca/listar", "/api/terremoto/listar", "/api/qldar/listar","/api/qldagua/listar").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/chuva/add", "/api/seca/add", "/api/terremoto/add", "/api/qldar/add", "/api/qldagua/add").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/chuva/put", "/api/seca/put", "/api/terremoto/put", "/api/qldar/put", "/api/qldagua/put").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/chuva/delete", "/api/seca/delete", "/api/terremoto/delete", "/api/qldar/delete", "/api/qldagua/delete").hasRole("ADMIN")

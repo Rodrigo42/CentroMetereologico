@@ -1,4 +1,4 @@
-package br.com.fiap.cmc;
+package trash;
 
 import org.junit.jupiter.api.Test;
 
@@ -9,14 +9,14 @@ import java.net.http.HttpResponse;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TerremotoControllerTest {
+public class SecaControllerTest {
     @Test
     public void testGetLocalEndpointReturns200() throws Exception {
         // Cria o cliente HTTP
         HttpClient client = HttpClient.newHttpClient();
 
         // Endereço da API local
-        String uri = "http://localhost:8080/api/terremoto";
+        String uri = "http://localhost:8080/api/seca";
 
         // Cria a requisição GET
         HttpRequest request = HttpRequest.newBuilder()
