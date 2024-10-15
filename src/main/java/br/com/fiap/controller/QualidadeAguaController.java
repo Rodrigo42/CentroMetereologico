@@ -1,8 +1,6 @@
 package br.com.fiap.controller;
 
-import br.com.fiap.model.SensorChuva;
 import br.com.fiap.model.SensorQualidadeAgua;
-import br.com.fiap.service.ChuvaService;
 import br.com.fiap.service.QualidadeAguaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

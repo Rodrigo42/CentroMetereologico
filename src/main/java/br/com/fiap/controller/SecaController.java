@@ -2,7 +2,6 @@ package br.com.fiap.controller;
 
 
 import br.com.fiap.model.SensorSeca;
-
 import br.com.fiap.service.SecaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
