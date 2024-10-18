@@ -12,7 +12,7 @@ public class ChuvaControllerTest {
     public void testGetEndpointStatusOk() {
 
         // URL da API
-        String url = "/api/chuva/listar";
+        String url = "fiap-cmc-api-dev-a0cfbcc0e4epexhb.eastus2-01.azurewebsites.net/api/chuva/listar";
 
         // Realiza a requisição GET com o token no cabeçalho Authorization
         Response response = RestAssured.given().get(url);
