@@ -11,7 +11,7 @@ public class QualidadeArControllerTest {
     public void testGetEndpointStatusOk() {
 
         // URL da API
-        String url = "fiap-cmc-api-dev-a0cfbcc0e4epexhb.eastus2-01.azurewebsites.net/api/qldar/listar";
+        String url = "http://fiap-cmc-api-dev-a0cfbcc0e4epexhb.eastus2-01.azurewebsites.net/api/qldar/listar";
 
         // Realiza a requisição GET com o token no cabeçalho Authorization
         Response response = RestAssured.given().get(url);
