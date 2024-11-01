@@ -1,12 +1,11 @@
-package services;
+package br.com.fiap.test.services;
 
 import br.com.fiap.model.SensorQualidadeAgua;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import model.SensorChuvaModel;
-import model.SensorQualidadeDaAguaModel;
+import br.com.fiap.test.model.SensorQualidadeDaAguaModel;
 
 import static io.restassured.RestAssured.given;
 

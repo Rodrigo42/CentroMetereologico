@@ -1,12 +1,10 @@
 package steps;
 
-import com.networknt.schema.ValidationMessage;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import model.ErrorMessageModel;
-import model.SensorChuvaModel;
 import org.junit.Assert;
 import services.SensorChuvaService;
 import services.SensorQualidadeDaAguaService;
@@ -14,7 +12,6 @@ import services.SensorSecaService;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class ChuvaStepdefs {
     SensorChuvaService sensorChuvaService = new SensorChuvaService();

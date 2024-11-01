@@ -1,4 +1,4 @@
-package model;
+package br.com.fiap.test.model;
 
 
 import com.google.gson.annotations.Expose;
