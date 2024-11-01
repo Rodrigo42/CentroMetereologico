@@ -13,7 +13,7 @@ import services.SensorSecaService;
 import java.util.List;
 import java.util.Map;
 
-public class ChuvaStepdefs {
+public class MyStepdefs {
     SensorChuvaService sensorChuvaService = new SensorChuvaService();
     SensorQualidadeDaAguaService sensorQualidadeDaAguaService = new SensorQualidadeDaAguaService();
     SensorSecaService sensorSecaService = new SensorSecaService();
