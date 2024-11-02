@@ -1,15 +1,18 @@
 package services;
 
+import br.com.fiap.model.SensorQualidadeAr;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import model.SensorChuvaModel;
+import model.SensorQualidadeArModel;
 
 import static io.restassured.RestAssured.given;
 
-public class SensorChuvaService {
-    final SensorChuvaModel sensorChuvaModel = new SensorChuvaModel();
+public class SensorQualidadeDoArService {
+
+    final SensorQualidadeArModel sensorQualidadeAr = new SensorQualidadeArModel();
     public final Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
@@ -18,15 +21,15 @@ public class SensorChuvaService {
 
     public void setFieldsDelivery(String field, String value) {
         switch (field) {
-            case "precipitacao" -> sensorChuvaModel.setPrecipitacao(Long.parseLong(value));
-            case "data" -> sensorChuvaModel.setData(value);
+            case "ar" -> sensorQualidadeAr.setAr(Long.parseLong(value));
+            case "data" -> sensorQualidadeAr.setData(value);
             default -> throw new IllegalStateException("Unexpected feld" + field);
         }
     }
 
     public void createDelivery(String endPoint) {
         String url = baseUrl + endPoint;
-        String bodyToSend = gson.toJson(sensorChuvaModel);
+        String bodyToSend = gson.toJson(sensorQualidadeAr);
         response = given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
@@ -37,8 +40,6 @@ public class SensorChuvaService {
                 .extract()
                 .response();
     }
-
-
 
 
 }

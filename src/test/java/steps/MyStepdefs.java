@@ -1,27 +1,28 @@
 package steps;
 
-import io.cucumber.java.pt.Dado;
-import io.cucumber.java.pt.E;
-import io.cucumber.java.pt.Entao;
-import io.cucumber.java.pt.Quando;
+import io.cucumber.java.pt.*;
 import model.ErrorMessageModel;
+import model.SensorTerremotoModel;
 import org.junit.Assert;
-import services.SensorChuvaService;
-import services.SensorQualidadeDaAguaService;
-import services.SensorSecaService;
+import services.*;
 
 import java.util.List;
 import java.util.Map;
+
+
 
 public class MyStepdefs {
     SensorChuvaService sensorChuvaService = new SensorChuvaService();
     SensorQualidadeDaAguaService sensorQualidadeDaAguaService = new SensorQualidadeDaAguaService();
     SensorSecaService sensorSecaService = new SensorSecaService();
+    SensorTerremotoService sensorTerremotoService = new SensorTerremotoService();
+    SensorQualidadeDoArService sensorQualidadeDoArService = new SensorQualidadeDoArService();
 
+    //Chuva
     @Dado("que eu tenha o seguinte dado para registrar")
     public void queEuTenhaOSeguinteDadoParaRegistrar(List<Map<String, String>> rows) {
-        for(Map<String, String> columns : rows) {
-            sensorChuvaService.setFieldsDelivery(columns.get("campo"),  columns.get("valor"));
+        for (Map<String, String> columns : rows) {
+            sensorChuvaService.setFieldsDelivery(columns.get("campo"), columns.get("valor"));
         }
     }
 
@@ -41,11 +42,11 @@ public class MyStepdefs {
                 sensorChuvaService.response.jsonPath().prettify(), ErrorMessageModel.class);
         Assert.assertEquals(message, errorMessageModel.getMessage());
     }
-
+    //Qualidade da agua
     @Dado("que eu tenha o seguinte dado de sensor qualidade da agua  para registrar")
     public void queEuTenhaOSeguinteDadoDeSensorQualidadeDaAguaParaRegistrar(List<Map<String, String>> rows) {
-        for(Map<String, String> columns : rows) {
-            sensorQualidadeDaAguaService.setFieldsDelivery(columns.get("campo"),  columns.get("valor"));
+        for (Map<String, String> columns : rows) {
+            sensorQualidadeDaAguaService.setFieldsDelivery(columns.get("campo"), columns.get("valor"));
         }
     }
 
@@ -66,10 +67,11 @@ public class MyStepdefs {
         Assert.assertEquals(message, errorMessageModel.getMessage());
     }
 
+    //Umidade
     @Dado("que eu tenha o seguinte dado de sensor de umidade para registrar")
     public void queEuTenhaOSeguinteDadoDeSensorDeUmidadeParaRegistrar(List<Map<String, String>> rows) {
-        for(Map<String, String> columns : rows) {
-            sensorSecaService.setFieldsDelivery(columns.get("campo"),  columns.get("valor"));
+        for (Map<String, String> columns : rows) {
+            sensorSecaService.setFieldsDelivery(columns.get("campo"), columns.get("valor"));
         }
     }
 
@@ -90,21 +92,41 @@ public class MyStepdefs {
         Assert.assertEquals(message, errorMessageModel.getMessage());
     }
 
-    /*//Exclusão chuva
-    @Dado("que eu recupere o ID da entrega criada no contexto")
-    public void queEuRecupereOIDDaEntregaCriadaNoContexto() {
-        sensorChuvaService.retrieveIdDelivery();
+    //Terremoto
+    @Dado("que eu tenha o seguinte dado do sensor de terremoto")
+    public void queEuTenhaOSeguinteDadoDoSensorDeTerremoto(List<Map<String, String>> rows) {
+        for (Map<String, String> columns : rows) {
+            sensorTerremotoService.setFieldsDelivery(columns.get("campo"), columns.get("valor"));
+        }
     }
 
-    @Quando("eu enviar a requisição para o endpoint {string} de exclusão")
-    public void euEnviarARequisiçãoParaOEndpointDeExclusão(String endpoint) {
-        sensorChuvaService.deleteDelivery(endpoint);
+    @Quando("eu enviar a requisição para o endpoint de terremoto {string} de registro")
+    public void euEnviarARequisiçãoParaOEndpointDeTerremotoDeRegistro(String endpoint) {
+        sensorTerremotoService.createDelivery(endpoint);
     }
 
     @Entao("o status code de resposta deve ser o {int}")
     public void oStatusCodeDeRespostaDeveSerO(int statusCode) {
-        Assert.assertEquals(statusCode, sensorChuvaService.response.statusCode());
-    }*/
+        Assert.assertEquals(statusCode, sensorTerremotoService.response.statusCode());
+    }
+    //Qualidade do Ar
+    @Dado("que eu tenha o seguinte dado do sensor de Qualidade do Ar")
+    public void queEuTenhaOSeguinteDadoDoSensorDeQualidadeDoAr(List<Map<String, String>> rows) {
+        for (Map<String, String> columns : rows) {
+            sensorQualidadeDoArService.setFieldsDelivery(columns.get("campo"), columns.get("valor"));
+        }
+    }
+
+    @Quando("eu enviar a requisição para o endpoint de Qualidade do Ar {string} de registro")
+    public void euEnviarARequisiçãoParaOEndpointDeQualidadeDoArDeRegistro(String endpoint) {
+        sensorQualidadeDoArService.createDelivery(endpoint);
+    }
+
+    @Entao("o status code de resposta de qualidade do ar deve ser o {int}")
+    public void oStatusCodeDeRespostaDeQualidadeDoArDeveSerO(int statusCode) {
+        Assert.assertEquals(statusCode, sensorQualidadeDoArService.response.statusCode());
+    }
+
 
 
 

@@ -4,12 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import model.SensorChuvaModel;
+import model.SensorQualidadeArModel;
+import model.SensorTerremotoModel;
 
 import static io.restassured.RestAssured.given;
 
-public class SensorChuvaService {
-    final SensorChuvaModel sensorChuvaModel = new SensorChuvaModel();
+public class SensorTerremotoService {
+
+    final SensorTerremotoModel sensorTerremotoModel = new SensorTerremotoModel();
     public final Gson gson = new GsonBuilder()
             .excludeFieldsWithoutExposeAnnotation()
             .create();
@@ -18,15 +20,15 @@ public class SensorChuvaService {
 
     public void setFieldsDelivery(String field, String value) {
         switch (field) {
-            case "precipitacao" -> sensorChuvaModel.setPrecipitacao(Long.parseLong(value));
-            case "data" -> sensorChuvaModel.setData(value);
+            case "sismico" -> sensorTerremotoModel.setSismico(Long.parseLong(value));
+            case "data" -> sensorTerremotoModel.setData(value);
             default -> throw new IllegalStateException("Unexpected feld" + field);
         }
     }
 
     public void createDelivery(String endPoint) {
         String url = baseUrl + endPoint;
-        String bodyToSend = gson.toJson(sensorChuvaModel);
+        String bodyToSend = gson.toJson(sensorTerremotoModel);
         response = given()
                 .contentType(ContentType.JSON)
                 .accept(ContentType.JSON)
@@ -37,8 +39,4 @@ public class SensorChuvaService {
                 .extract()
                 .response();
     }
-
-
-
-
 }

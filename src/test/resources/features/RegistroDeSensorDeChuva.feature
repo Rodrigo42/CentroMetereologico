@@ -19,3 +19,4 @@ Funcionalidade:Registro de sensor de chuva
     Quando eu enviar a requisição para o endpoint "/api/chuva/add" de cadastro
     Entao O status code de resposta da chuva deve ser 400
     E o corpo de resposta de erro da api de chuva deve retornar a mensagem "JSON parse error: Cannot deserialize value of type `java.time.LocalDate` from String \"10-10-20222\": Failed to deserialize java.time.LocalDate: (java.time.format.DateTimeParseException) Text '10-10-20222' could not be parsed at index 0"
+
