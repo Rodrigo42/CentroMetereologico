@@ -1,14 +1,16 @@
 package steps;
 
+import com.networknt.schema.ValidationMessage;
 import io.cucumber.java.pt.*;
 import model.ErrorMessageModel;
-import model.SensorTerremotoModel;
+import org.json.JSONException;
 import org.junit.Assert;
 import services.*;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-
+import java.util.Set;
 
 
 public class MyStepdefs {
@@ -105,10 +107,23 @@ public class MyStepdefs {
         sensorTerremotoService.createDelivery(endpoint);
     }
 
-    @Entao("o status code de resposta deve ser o {int}")
-    public void oStatusCodeDeRespostaDeveSerO(int statusCode) {
+    @Entao("O status code de resposta do terremoto deve ser {int}")
+    public void oStatusCodeDeRespostaDoTerremotoDeveSer(int statusCode) {
         Assert.assertEquals(statusCode, sensorTerremotoService.response.statusCode());
     }
+
+    @E("que o arquivo de contrato esperado é o {string}")
+    public void queOArquivoDeContratoEsperadoÉO(String contrato) throws JSONException, IOException {
+        sensorTerremotoService.setContract(contrato);
+    }
+
+    @Então("a resposta da requisição deve estar em conformidade com o contrato selecionado")
+    public void aRespostaDaRequisiçãoDeveEstarEmConformidadeComOContratoSelecionado() throws JSONException, IOException {
+        Set<ValidationMessage> validateResponse = sensorTerremotoService.validateResponseAgainstSchema();
+        Assert.assertTrue("O contrato é inválido. Erros: " + validateResponse, validateResponse.isEmpty());
+    }
+
+
     //Qualidade do Ar
     @Dado("que eu tenha o seguinte dado do sensor de Qualidade do Ar")
     public void queEuTenhaOSeguinteDadoDoSensorDeQualidadeDoAr(List<Map<String, String>> rows) {
@@ -126,7 +141,6 @@ public class MyStepdefs {
     public void oStatusCodeDeRespostaDeQualidadeDoArDeveSerO(int statusCode) {
         Assert.assertEquals(statusCode, sensorQualidadeDoArService.response.statusCode());
     }
-
 
 
 

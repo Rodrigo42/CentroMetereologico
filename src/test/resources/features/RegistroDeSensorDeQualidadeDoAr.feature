@@ -17,4 +17,4 @@ Funcionalidade: registro de sensor de Qualidade do Ar
       | ar |  100 |
       |   data  | 20-10-20222 |
     Quando eu enviar a requisição para o endpoint de Qualidade do Ar "/api/qldar/add" de registro
-    Entao O status code de resposta de qualidade do ar deve ser 400
+    Entao o status code de resposta de qualidade do ar deve ser o 400

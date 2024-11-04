@@ -9,7 +9,9 @@
         |  campo | valor|
         | sismico |  3  |
       Quando eu enviar a requisição para o endpoint de terremoto "/api/terremoto/add" de registro
-      Entao o status code de resposta deve ser o 201
+      Entao O status code de resposta do terremoto deve ser 201
+      E que o arquivo de contrato esperado é o "contrato-terremoto"
+      Então a resposta da requisição deve estar em conformidade com o contrato selecionado
 
     Cenario: Registro do sensor de terremoto com dados incorretos
       Dado que eu tenha o seguinte dado do sensor de terremoto
@@ -17,4 +19,4 @@
         | sismico |  100 |
         |   data  | 20-10-20222 |
       Quando eu enviar a requisição para o endpoint de terremoto "/api/terremoto/add" de registro
-      Entao O status code de resposta deve ser 400
+      Entao O status code de resposta do terremoto deve ser 400

@@ -37,15 +37,6 @@
         "2024-10-18"
       ],
       "pattern": "^.*$"
-    },
-    "cto": {
-      "$id": "#root/cto",
-      "title": "Cto",
-      "type": "integer",
-      "examples": [
-        0
-      ],
-      "default": 0
     }
   }
 }

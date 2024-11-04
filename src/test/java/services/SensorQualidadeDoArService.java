@@ -1,11 +1,9 @@
 package services;
 
-import br.com.fiap.model.SensorQualidadeAr;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import model.SensorChuvaModel;
 import model.SensorQualidadeArModel;
 
 import static io.restassured.RestAssured.given;
